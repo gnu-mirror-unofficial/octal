@@ -7,16 +7,15 @@
 <meta name="Author" content="dto@gnu.org">
 <meta name="Description" content="GNU OCTAL project">
 <meta name="Keywords" content="linux gnu/linux GNU unix tracker tracking MOD
-opensource free DSP sound audio application GPL music system">
+opensource free DSP sound audio application GPL music system plugin plugins">
 <META NAME="keywords" CONTENT="octal">
 <title>GNU Octal :: free music system </title>
 
 <style type="text/css"> <!--
-body {font-family: verdana, helvetica, sans-serif; }
-.section {font-family: verdana, helvetica, sans-serif; color: #black;
-font-weight: bold; }
-.question {font-family: verdana, helvetica, sans-serif; font-weight: italic; color: #ffcd82 }
-.note {font-size: 80%; }
+	body {font-family: verdana, helvetica, sans-serif; }
+	.section {font-family: verdana, helvetica, sans-serif; color: #black; font-weight: bold; }
+	.question {font-family: verdana, helvetica, sans-serif; font-weight: italic; color: #ffcd82 }
+	.note {font-size: 80%; }
 --> </style> 
 </head>
 
@@ -36,10 +35,11 @@ page">
 
 <tr><td align=center>
 <!-- COMMENTING OUT THE SCREENSHOT URL FOR NOW <a href="">Screenshots</a> -->
-<a href="http://savannah.gnu.org/projects/octal/">Download</a> --- <a href="http://mail.gnu.org/mailman/listinfo/octal-dev">Discuss</a> 
---- <a href="http://www.gnu.org/software/octal/ox_api_main/index.html">OX_API Documentation</a>
- --- <a href="http://www.sourceforge.net/projects/octalmachines">Developer
-Community</a> --- <a href="links.html">Links</a> 
+<a href="http://savannah.gnu.org/projects/octal/">Download</a> --- 
+<a href="http://mail.gnu.org/mailman/listinfo/octal-dev">Discuss</a> --- 
+<a href="http://www.gnu.org/software/octal/ox_api_main/index.html">OX_API Documentation</a> --- 
+<a href="http://www.sourceforge.net/projects/octalmachines">Developer Community</a> --- 
+<a href="links.html">Links</a> 
 </td></tr> 
 
 <!-- spacer row --> 
@@ -50,20 +50,30 @@ Community</a> --- <a href="links.html">Links</a>
 
 <!-- announcements go here --> 
 
-<p class=section>12 September 2002.</p> The alpha codebase is about to undergo
-a significant change in accordance with recent discussions on the
-Octal-dev mailing list.  The project has moved toward a MIDI-esque sequencing
-and channel model, having abandoned the strict step-sequencing and numeric hex
-notation of tracker programs. In addition, large parts of Octal will be moved
-to GNU Objc, a powerful object-oriented language that's part of the GNU Compiler
-Collection. 
+<p class=section>27 Jan 2003.</p>The transition to GNU Objc is proceeding smoothly. The nightly CVS should start compiling by the end of the week, and the currently-out-of-date API docs will get revised shortly after that.
+In the meantime, here are some interesting links to projects and standards
+that have influenced Octal's direction:
+<ul> 
 
-<p>Watch this space for new information.
+<li><a href="http://cnmat.cnmat.berkeley.edu/OSC/">OpenSoundControl</a> --- An
+interesting text-based protocol for the control of synthesizers. It actually
+has the potential to do much more. Octal will use a variant of OSC. 
 
-<p class=section>4 April 2001.</p> Documentation now available in 
-<a href="octal_api.pdf">PDF format</a>. 
+<li><a href="http://www.linuxdj.com/audio/lad/">Linux Audio Developer's mailing
+list</a> --- Home page for the low-latency hard-realtime audio application
+gurus. The LAD group also develops API standards to promote interoperability
+between audio applications. Thus far the group has produced a low-latency 
+inter-application connection server (JACK) and a basic audio effects plugin
+interface (LADSPA.) 
+<p>
+JACK is a solid effort and Octal will support JACK output. The LADSPA standard is not useful for virtual instruments, and attempts to add support 
+for graphical user interfaces failed to reach any consensus. A new LAD effort
+called XAP, which seems to be an API for virtual instruments with timestamped
+events, is in the early planning stages.  
+<li><i>More to come...</i>
+</ul>
 
-<p class=section>Octal is now stored in GNU CVS.</p> The following commands will check out the latest development version:
+<p class=section>Octal in GNU CVS.</p> The following commands will check out the latest development version:
 <p>
 <pre>
 cvs -d:pserver:anoncvs@subversions.gnu.org:/cvsroot/octal login
@@ -73,32 +83,32 @@ cvs -z3 -d:pserver:anoncvs@subversions.gnu.org:/cvsroot/octal co octal
 
 
 <!-- about the project -->
-<p class=section>About the project</p>
+<p class=section>About the project.</p>
 
+<p>GNU Octal is intended to be an integrated electronic music workstation. 
 
-OCTAL is a GNU project (started in 1999) to create a free music system based on unit generator synthesis, sampling, and audio-plugin technology. It consists of:
+It consists of:
 
 <ol>
-<li> A music-systems <a href="http://www.gnu.org/software/octal/ox_api_main/index.html">plugin API</a>, 
-used to define sound processing objects called "machines" that users may download from the web to use 
-as instruments or effects in their compositions.  
-<li> A core component to load these machines, communicate with them, route and mix audio signals between 
-them, and produce output on an audio device. 
-<li> A graphical user interface (using the Gimp Toolkit) to interactively create, compose, and perform 
-music using the core as a backend.
-<li> An open file format for saving these compositions and the associated resources (sound samples, 
-plugin machines) that comprise them.
+<li> A C-language plugin API, used to define sound processing objects called "modules"
+that users may download from the web to use as instruments or effects in their
+compositions.  
+<li>A core component to load these modules, communicate with them, route and
+mix audio signals between them, and produce output on an audio device. 
+<li>A graphical user interface to interactively compose and perform 
+music using the core as a back-end.
+<li>An open file format for saving these compositions and their associated
+resources. 
 </ol>
+Our ultimate goal is to create a completely free-software music
+system---plugins and all---with an archival file format so that the work put into 
+compositions will last with time.
 
-<p>As of March 2001, part one is essentially stable; parts two and three are currently 
-in usable "developer's releases" and are progressing quickly. The eventual goal of this 
-project is to create a completely free-software music system (plugin modules and all) 
-and an archival format so that the work put into compositions can last with time. 
 
 <hr size=1>
 
 <!------------------------------- this is where the GNU/FSF bit goes -->
-<p>&copy; 1999, 2000, 2001 by David O'Toole <a href="mailto:dto@gnu.org">(dto@gnu.org)</a> Verbatim copying and distribution of this entire article is permitted in any medium, provided this notice is preserved.
+<p>&copy; 2003 by David O'Toole <a href="mailto:dto@gnu.org">(dto@gnu.org)</a> Verbatim copying and distribution of this entire article is permitted in any medium, provided this notice is preserved.
 <p>Return to <A HREF="/home.html">GNU's home page</A>.
 <P>Please send FSF &amp; GNU inquiries &amp; questions to <A HREF="mailto:gnu@gnu.org"><EM>gnu@gnu.org</EM></A>.
 There are also <A HREF="/home.html#ContactInfo">other ways to contact</A> the FSF. Please send comments on these web pages to
