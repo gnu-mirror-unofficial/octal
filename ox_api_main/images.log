@@ -1,4 +1,4 @@
-This is TeX, Version 3.14159 (Web2C 7.3.1) (format=latex 2000.7.19)  24 MAR 2001 22:51
+This is TeX, Version 3.14159 (Web2C 7.3.1) (format=latex 2000.7.19)  3 APR 2001 13:00
 **./images.tex
 (./images.tex
 LaTeX2e <1999/12/01> patch level 1
@@ -39,7 +39,7 @@ File: latin1.def 1999/09/17 v0.992 Input encoding file
 ))
 \sizebox=\box26
 \lthtmlwrite=\write3
-No file images.aux.
+(images.aux)
 \openout1 = `images.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 115.
@@ -103,10 +103,10 @@ l2hSize :tex2html_wrap_inline924:6.95831pt::6.95831pt::21.05565pt.
 
 ] (images.aux) ) 
 Here is how much of TeX's memory you used:
- 623 strings out of 20898
- 7667 string characters out of 196686
- 49557 words of memory out of 350001
- 3612 multiletter control sequences out of 10000+15000
+ 632 strings out of 20898
+ 7764 string characters out of 196686
+ 49591 words of memory out of 350001
+ 3621 multiletter control sequences out of 10000+15000
  3640 words of font info for 14 fonts, out of 400000 for 1000
  14 hyphenation exceptions out of 1000
  23i,5n,19p,162b,217s stack positions out of 1500i,100n,500p,50000b,4000s

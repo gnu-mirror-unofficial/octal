@@ -394,14 +394,14 @@ default values for the parameter.
 <P>
 We can pack this information into a string with the following format:
 <PRE>
-:name:description:type:widget:minvalue:maxvalue:defaultvalue:
+|name|description|type|widget|minvalue|maxvalue|defaultvalue|
 </PRE>
 Create a null-terminated array of strings, one for each parameter:
 
 <P><PRE>
 char *my_params[] = {
-        ":note:Which note to play:note:slider:0:128:0",
-        ":vol:Volume 0.0-1.0:generic:slider:0:1.0:0.6",
+        "|note|Which note to play|note|slider|0|128|0",
+        "|vol|Volume 0.0-1.0|generic|slider|0|1.0|0.6",
         NULL    		
 };
 </PRE>
@@ -1159,7 +1159,7 @@ Mathematics Department, Macquarie University, Sydney.
 The command line arguments were: <BR>
  <STRONG>latex2html</STRONG> <TT>-split 0 ox_api_main.tex</TT>
 <P>
-The translation was initiated by David O'Toole on 2001-03-24
+The translation was initiated by David O'Toole on 2001-04-03
 <BR><HR><H4>Footnotes</H4>
 <DL>
 <DT><A NAME="foot188">... data</A><A NAME="foot188"
@@ -1217,7 +1217,7 @@ argument; don't use the default no-arg constructor at all.
 <!--End of Navigation Panel-->
 <ADDRESS>
 David O'Toole
-2001-03-24
+2001-04-03
 </ADDRESS>
 </BODY>
 </HTML>
