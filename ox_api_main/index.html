@@ -511,7 +511,7 @@ square wave generator machine included in the <TT>OCTAL</TT> distribution:
 <P><PRE>
   t-&gt;long_name        = "David's Simple Squarewave Machine"; 
   t-&gt;short_name       = "dtosquare"; 
-  t-&gt;max_tracks       = 1; 
+  t-&gt;max_channels     = 1; 
   t-&gt;input_channels   = 1; 
   t-&gt;output_channels  = 1;   
 
@@ -633,8 +633,8 @@ ox_event: when parameter values change</A>
 </H2>
 
 <P><PRE>
-void ox_event(machine* m, int which_param, 
-               int track, param value)
+void ox_event(machine* m, int channel, 
+            int which_param, param value)
 </PRE>
 
 <P>
@@ -654,7 +654,7 @@ up control changes in a pattern with the voice that should recieve them.
 
 <P>
 The value <TT>OX_NOTE_OFF</TT> is a special case for the <TT>note</TT>
-parameter type; it means that the note should stop playing on that track. 
+parameter type; it means that the note should stop playing on that channel. 
 
 <P>
 
@@ -665,7 +665,7 @@ Great. But now what do I do with the data?</A>
 <P>
 You might want to change the state of your machine. For instance, when you
 recieve a <TT>OX_NOTE_OFF</TT> value for the note, you may need to update a
-variable somewhere that says ``I'm no longer playing any notes on track
+variable somewhere that says ``I'm no longer playing any notes on channel
 <IMG
  WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
  SRC="img1.png"
@@ -1159,7 +1159,7 @@ Mathematics Department, Macquarie University, Sydney.
 The command line arguments were: <BR>
  <STRONG>latex2html</STRONG> <TT>-split 0 ox_api_main.tex</TT>
 <P>
-The translation was initiated by David O'Toole on 2001-04-03
+The translation was initiated by David O'Toole on 2001-04-07
 <BR><HR><H4>Footnotes</H4>
 <DL>
 <DT><A NAME="foot188">... data</A><A NAME="foot188"
@@ -1217,7 +1217,7 @@ argument; don't use the default no-arg constructor at all.
 <!--End of Navigation Panel-->
 <ADDRESS>
 David O'Toole
-2001-04-03
+2001-04-07
 </ADDRESS>
 </BODY>
 </HTML>
