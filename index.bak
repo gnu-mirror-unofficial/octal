@@ -1,0 +1,101 @@
+<!-- index.html for gnu.octal webpage                       -->
+<!-- visual site design (C)1999 David O'Toole (dto@iname.com)      -->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta name="Author" content="dto@qwsi.net">
+	<meta name="Description" content="GNU OCTAL project">
+	<meta name="Keywords" content="linux gun/linux GNU unix tracker tracking MOD opensource free DSP sound audio application GPL">
+	<title>GNU OCTAL project page</title>
+	
+	<!-- eventually this will be turned into an external stylesheet. -->
+	<style type="text/css"> <!--
+	.section {font-family: helvetica, swiss, arial; font-size: 125%; color: #006699 }
+	.question {font-family: helvetica, swiss, arial; font-weight: italic; color: #006699 }
+	.note {font-size: 80%; }
+	--> </style> 
+
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#006699" vlink="#006699" alink="#006699">
+
+
+<!-- the whole page is wrapped in this simple table, to ensure correct layout. -->
+<div align=center>
+<table width=620 border=0 cellpadding=0 cellspacing=2> 
+
+<tr height=100> <td> <img src="graphics/banner.png" alt="[logo] GNU OCTAL project page"> </td> </tr>
+
+<tr><td height=20>&nbsp;</td></tr> <!-- spacer row -->  
+
+<tr height="100%"><td valign=top>
+
+<!-- *********************** CONTENT BEGINS!!!***************************-->
+
+<img align=right src="graphics/abstract.png" alt="[abstract diagram of signal network]">
+<p class=section>11.3.99 - OCTAL RFC (request for comments) coming soon.</p>
+
+<span class="section">Purpose</span>
+
+<p>The GNU OCTAL project aims to build a set of portable, efficient, and free components which work together as a digital music workstation for gnu/linux and other unix systems. 
+
+<p><span class="section">Structure</span>
+
+<p>The OCTAL system will be built on a number of well-established ideas from music systems programming:
+<p>
+<ul>
+<li><b>Matrix-based sequencing.</b> The idea here is that traditional music notation is not well-suited to modern electronic composition, given the increased control over synthesis and articulation now available to the artist. Like popular "tracker" programs, OCTAL arranges its musical sequence data in a grid (rather like a spreadsheet) where each row is a discrete event and each column represents a different <i>parameter</i> for control of the generation of sound. 
+<li><b>Unit Generators (UGs).</b> A unit generator is a software module that emits or processes audio signals. The output of one or more can be routed or patched to the inputs of other UGs. By specifying a network of interconnections between simple component parts (or &quot;audio objects&quot;), the composer increases the range of sound generation possibilities. Upon the first implementation of unit generators nearly four decades ago at Bell Laboratories, it was quickly recognized to be a powerful and flexible approach, and it has been used in varying high-end audio applications since then. In the age of cheap computing power, this technique has become increasingly available on the home desktop. <i>[The diagram near the top of this page may give you an idea of how a network of UGs would be arranged--conveniently, it turns out to be an acyclic directed graph.] </i>
+<li><b>Software synthesis and sampling.</b> Eschewing the outdated and increasingly inapplicable MIDI protocol, OCTAL generates and processes all sound in software. It provides a built-in wavetable to be accessed by objects needing waveform data. Like a traditional tracker program, one object type might play a number of waves simultaneously, resampling them in real-time to achieve different pitches. Another object could use the wave data to modulate a signal being passed through it.
+<li><b>Block-oriented computation.</b> OCTAL generates its output stream(s) in <i>blocks,</i> which are chunks of a number of output samples. There might be anywhere from ten to a hundred or more blocks per second, depending on the situation. This is an efficient approach, since synthesis parameters are loaded and sent just once each block instead of once for each sample. 
+<li><b>Graphical workspace.</b>
+</ul>
+
+<p><span class="section">Project Organization and Tools</span>
+
+<p>This project sounds ambitious, but in truth, the different parts of the system have all been done before. Matrix-based (or <quote>tracking style</quote>) sequencing has been around for years; Unit Generators date back to 1960. The design of the OCTAL system is geared towards splitting the task into manageable pieces: smaller, separate components that are designed to work together. 
+
+<p>The standard gnu development suite (gcc, gdb, etcetera) will be used to build the OCTAL project components. The primary language will be C, though object modules may be developed in any compiled language that supports C bindings.
+
+<p>The initial prototype release, OCTAL 0, will be designed and developed by the core OCTAL development team. Project founder David O'Toole <a href="mailto:dto@iname.com">(dto@iname.com)</a> will direct system architecture. The OCTAL Workspace may eventually benefit from having its own team of developers. 
+
+<p> Using the <a href="http://www.cix.co.uk/~dunnp/unix-philosophy.html">unix philosophy</a> of simplicity, portability, and efficiency, OCTAL should work as well on the iMac as it does on an x86 box or a gnu/linux audio-capable palmtop computer. By doing one thing well, OCTAL can apply to more than one situation. For instance, the core can be used <i>sans</i> interface as an efficient music and sound effects library for applications such as computer games. 
+
+<p>All system components will be released under the GNU <a href="http://www.gnu.org/copyleft/copying-1.0.html">General Public License.</a>  
+
+
+<p class=section>Coming soon to the GNU OCTAL webpage:</p>
+
+<p>These documents will be added when written up:
+
+<br><ul>
+<li>list of currently participating developers, with contact information
+<li>documentation of system components and architecture
+<li>design philosophy and developer guideline drafts
+<li>list of needed tasks for developers to work on
+
+</ul>
+
+<hr size=1>
+
+<!------------------------------- this is where the GNU/FSF copyright bit goes -->
+<p>Return to <A HREF="/home.html">GNU's home page</A>.
+<P>Please send FSF &amp; GNU inquiries &amp; questions to <A HREF="mailto:gnu@gnu.org"><EM>gnu@gnu.org</EM></A>.
+There are also <A HREF="/home.html#ContactInfo">other ways to contact</A> the FSF. Please send comments on these web pages to
+<A HREF="mailto:webmasters@gnu.org"><EM>webmasters@gnu.org</EM></A>, send other questions to <A HREF="mailto:gnu@gnu.org"><EM>gnu@gnu.org</EM></A>. 
+<p>
+<br>&copy; 1999 Free Software Foundation, Inc.,
+59 Temple Place - Suite 330, Boston, MA  02111, USA. Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.<P>
+
+<!-- ********************** END ****************************************-->
+
+</td>
+
+
+
+</tr>
+
+</table>
+</div>
+</body>
+</html>

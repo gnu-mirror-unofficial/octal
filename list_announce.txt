@@ -1,0 +1,124 @@
+GNU OCTAL ::: THE GNU TRACKER 
+----------------------------------------------
+WELCOME
+----------------------------------------------
+
+Welcome to the developer's mailing list for GNU OCTAL,
+octal-dev@gnu.org.  This is a list for discussing development of
+OCTAL, development of Machine plugins for use with OCTAL, and other
+related topics.
+
+If you have been placed on this list by mistake, please email me at
+dto@gnu.org to be removed from the list.
+
+OCTAL is a project to bring a Buzz-like, unit-generator-based tracker
+to UNIX and the X Window System. You may want to check www.buzz2.com
+for more information on Buzz. It's an immensely popular tracker for
+the Win32 environment. The existing design for OCTAL makes some
+improvements over Buzz, such as:
+
+* support for stereo signals and samples.  
+* better support for auxiliary inputs to machines 
+  (for vocoding, etc).  
+* more open API (you can write machines in C or C++, whereas Buzz 
+  requires a C++ compiler from a particular vendor.)  
+* built on open standards: OSS/Free, the GNU development suite, 
+  and so on
+* not hindered by binary compatibility issues, which can hold up
+  development when "inside" changes need to be made to APIs
+* it's GNU :-)
+
+I hope that we can also build a free library of machines to rival that
+available for Buzz. Toward that end, I have been in touch with
+Arguelles Rius, who has written many popular Buzz machines. In
+addition, Matt Stanton (the "PR guy") has been in touch with some more
+people about similar ports.
+
+The home page for OCTAL is at http://www.gnu.org/software/octal. By
+the time you read this, the current source code package and API docs
+should be available at ftp://alpha.gnu.org
+
+STATUS
+--------------------------------------
+
+The design was worked out in the latter half of 1999, and coding began
+shortly after the New Year, 2000. The core is functional but currently
+incomplete, and is in an alpha stage.
+
+What works now:
+
+* OSS output (not yet low-latency but this is being worked on)
+* Block-oriented output and generation Most of the Machine API, with
+  documentation.  A square-wave generator plugin. This is mostly
+  intended as an example of the plugin API, to show others how to use
+  it to create machines.  
+* Shared-object loading for plugins (this falls under the Machine API.)
+
+What is still being worked on:
+
+  * The pattern system (or "sequencer.") Like all trackers, this will be
+done with step-sequencing, so this will likely be somewhat simple. I
+already wrote one version, but I redesigned it and have started over.
+  * The signal network connecting machines together and driving the main
+computation. The algorithms and such have already been worked out for
+this.
+  * User interface (using GTK+). This will follow the GIMP and GNU Dia,
+which have a toolbox and separate top-level document windows which can
+be arranged as you please. You can have a pattern editor window, a
+machine-diagram window, a master sequence window, etcetera. (Thanks to
+Matthew Itkin for this idea.)
+  internal wavetable and resampler engine
+
+These remaining components, with the exception of the GUI, should be
+finished before too long. GUI coding will be done in the C language.
+
+PHILOSOPHY
+---------------------------------------
+
+This project follows the "keep it simple" UNIX approach. It is in
+keeping with both the UNIX way, and (somewhat) with the tracking
+world's traditional approach to software design.
+
+One way to read this is that some features are better implemented as
+separate programs rather than expanding the core itself. For example,
+it has been suggested that OCTAL add internal support for compressed
+sample formats. (Sometimes MP3 is suggested, but this wouldn't work
+due to the way it stores data.)
+
+This might be useful for distributing song files in their native
+format--shorter download times, and the like. But this is better
+implemented as a separate compressor program, taking a normal
+uncompressed OCTAL song as its input, and creating a compressed
+version. (Something like gzip, but better optimized for audio.) This
+way the core code stays simple and uncluttered.
+
+I have a similar opinion about the wave editor; it may not be the best
+use of our time to write one from scratch, although there is no reason
+to rule it out should the need arise. What might be better is to start
+working with one of the existing UNIX wave editor projects. However,
+if none of them prove satisfactory, perhaps it might be prudent to
+start a wave editor going at GNU as part of the OCTAL project. (This
+was intended originally to be a suite of related but independent
+programs, such as a tracker and wave editor.)
+
+SCOPE
+---------------------------------------
+
+Some limits must be drawn if the project is to reach its goals. OCTAL
+is not a compiler for a low-level DSP language like CSound, nor is it
+a visual programming tool. It is a free, step-sequenced,
+plugin-oriented, unit-generator-based tracking system for electronic
+musicians.
+
+---------------------------------------
+---------------------------------------
+
+Thank you. I look forward to talking/working with you in the coming
+months as OCTAL moves toward completion, and afterward as the library
+of machines (hopefully) grows and music is released.
+
+Check out the GNU Tracker Machine API (tentative name) at
+ftp://alpha.gnu.org
+
+
+  

@@ -1,0 +1,144 @@
+<!-- index.html for gnu.octal webpage         -->
+
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Author" content="dto@gnu.org">
+<meta name="Description" content="GNU OCTAL project">
+<meta name="Keywords" content="linux gnu/linux GNU unix tracker tracking MOD opensource free DSP sound audio application GPL">
+<title>GNU OCTAL project page</title>
+
+<!-- eventually this will be turned into an external stylesheet. -->
+
+<style type="text/css"> <!--
+.section {font-family: helvetica, swiss, arial; color: white; background: #333333}
+.question {font-family: helvetica, swiss, arial; font-weight: italic; color: #ffcd82 }
+.note {font-size: 80%; }
+--> </style> 
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#666666" vlink="#666666" alink="#666666">
+
+<!-- the whole page is wrapped in this simple table, to ensure correct layout. -->
+
+<div align=center>
+<table width=600 border=0 cellpadding=0 cellspacing=2> <tr height=100>
+<td align=center> <img src="graphics/pagesplash.png" alt="[logo] GNU OCTAL project
+page">
+
+</td> </tr> 
+
+<tr><td  align=center height=12>
+<a href="http://dto.qwsi.net/octalstuff">Screenshots</a> ---
+<a href="ftp://alpha.gnu.org/gnu/octal/">Download</a> --- <a href="http://mail.gnu.org/mailman/listinfo/octal-dev">Discuss</a> --- <a
+href="http://www.gnu.org/software/octal/ox_api_main/index.html">OX_API Documentation</a>
+ --- <a href="links.html">Links</a> 
+</td></tr> <!-- spacer row --> 
+<tr height="100%"><td valign=top>
+
+<!-- *********************** CONTENT BEGINS!!!***************************-->
+
+<!-- announcements go here --> 
+
+<p class=section>25 January 2001. Update. <p>The GUI is working. The system is now a multithreaded program with message passing going back and forth between the audio core and the GUI shell. There will be a release of this code as soon as a few more things are hooked up that allow interactive playing-around. For screenshots, please visit <a href="http://dto.qwsi.net/octalstuff">my auxiliary octal page</a> where I keep random recent tidbits. I suspect we're only about a month away from the official beta phase. 
+
+<p class=section>28 November 2000. We're back.<p> Some minor delays related to work, but things are moving along well, and I expect to do another release soon (this time with GTK enabled.) The "missing" 0.5 release is back up at alpha.gnu.org, click the Download link above to visit it. More info soon.
+
+<p class=section>19 July 2000. Interim release.<p> I spent this week
+working on new parts of the core and making some needed revisions to
+<tt>OX_API</tt>. I'm pleased to report that the core is not far from finished, while the API has gone into a stable "freeze." There is an interim release at <a href="ftp://alpha.gnu.org/gnu/octal/">alpha.gnu.org</a>. There isn't much to see when you run it, but the new pieces are there. 
+
+<p>Please see the updated API documentation (<tt>make doc</tt> in the tarball,
+or click the docs link above) for info on these important changes. 
+
+<p class=section>21 June 2000. Little bits.<p> I added a Links page
+after Edward Coffey came up with a cool collection of DSP links. Let
+me know if you want to see anything added--perhaps this could have an
+"octalpeople" section, with links to individual home pages. This might also
+be a good way to link to people's plugins until the repository is set up.
+
+<p>I also opened up an account on <a
+href="http://www.advogato.org/">Advogato</a>, where I will be keeping
+a somewhat more detailed <a
+href="http://www.advogato.org/person/dto">development diary</a>.
+
+<p class=section>16 June 2000. GUI coding begins.<p> Yes, it's about that time. 
+There is a nifty <a href="graphics/engineviewshot.png">screenshot</a> available,
+showing how the UI responds to GTK+ themes.
+
+<p> Over the next few weeks, the dual-threaded architecture and messaging scheme will be put into place.
+
+
+<p><span class="section">Purpose</span>
+
+<p>GNU OCTAL is a tracking-audio workstation for gnu/linux and other
+unix systems. It is designed as a tool for electronic musicians who
+wish to achieve high-quality sound in a tracker environment.
+
+<p>Why tracking? It's fun, it works, and with modern computing power
+at our disposal, it produces professional results. Best of all, it
+requires no special hardware.
+
+<p><span class="section">Structure</span>
+
+<p>The OCTAL system adapts some well-established ideas from music systems programming, while retaining tracker style:
+
+<p>
+<ul>
+
+<li><b>Matrix-based sequencing.</b> The idea here is that traditional music notation is not well-suited to modern electronic composition, given the increased control over synthesis and articulation now available to the artist. Like popular "tracker" programs, OCTAL arranges its musical sequence data in a grid (rather like a spreadsheet) where each row is a discrete event and each column represents a different <i>parameter</i> for control of the generation of sound. 
+
+<li><b>Unit Generators (UGs).</b> A unit generator is a software module that emits or processes audio signals. The output of one or more can be routed or patched to the inputs of other UGs. By specifying a network of interconnections between simple component parts (or &quot;audio objects&quot;), the composer increases the range of sound generation possibilities. Upon the first implementation of unit generators nearly four decades ago at Bell Laboratories, it was quickly recognized to be a powerful and flexible approach, and it has been used in varying high-end audio applications since then. In the age of cheap computing power, this technique has become increasingly available on the home desktop. <i>[The diagram near the top of this page may give you an idea of how a network of UGs would be arranged--conveniently, it turns out to be an acyclic directed graph.] </i>
+
+<li><b>Software synthesis and sampling.</b> OCTAL generates and processes all sound in software. It provides a built-in wavetable to be accessed by objects needing waveform data. Like a traditional tracker program, one object type might play a number of waves simultaneously, resampling them in real-time to achieve different pitches. Another object could use the wave data to modulate a signal being passed through it.
+
+<li><b>Block-oriented computation.</b> OCTAL generates its output stream(s) in <i>blocks,</i> which are chunks of a number of output samples. There might be anywhere from ten to a hundred or more blocks per second, depending on the situation. This is an efficient approach, since synthesis parameters are loaded and sent just once each block instead of once for each sample. 
+
+<li><b>Graphical workspace.</b>
+
+</ul>
+
+<p><span class="section">Project Organization and Tools</span>
+
+<p>This project may sound ambitious, but in truth, the different parts of the system have all been done before. Matrix-based (or &quot;tracking style&quot;) sequencing has been around for years; Unit Generators date back to 1960. The design of the OCTAL system is geared toward simplicity and providing solid functionality, rather than packing in everything but the kitchen sink. None of the ideas listed above are particularly complex or difficult to implement--but as users of tracking software will tell you, you can do quite a bit with some simple but powerful tools. 
+
+<p>Project founder David O'Toole<a
+href="mailto:dto@gnu.org">(dto@gnu.org)</a> will direct system
+architecture and develop the core code. A number of audio developers
+have expressed interest in developing free audio plugin programs for
+OCTAL. If you are interested in developing free audio plugins or
+becoming a user of GNU OCTAL, you may want to join the octal mailing
+list (click the "Discuss" link at the top of the page.) Feel free to stop by #octal at
+irc.gimp.net or email me at <a
+href="mailto:dto@gnu.org">dto@gnu.org</a>.  <p>The standard gnu
+development suite will be used to build the OCTAL project components,
+using C. OCTAL will be released under the GNU <a
+href="http://www.gnu.org/copyleft/copying-1.0.html">General Public
+License.</a>
+
+<hr size=1>
+
+<!------------------------------- this is where the GNU/FSF bit goes -->
+
+<p>&copy; 1999, 2000 by David O'Toole <a href="mailto:dto@gnu.org">(dto@gnu.org)</a> Verbatim copying and distribution of this entire article is permitted in any medium, provided this notice is preserved.
+<p>Return to <A HREF="/home.html">GNU's home page</A>.
+<P>Please send FSF &amp; GNU inquiries &amp; questions to <A HREF="mailto:gnu@gnu.org"><EM>gnu@gnu.org</EM></A>.
+There are also <A HREF="/home.html#ContactInfo">other ways to contact</A> the FSF. Please send comments on these web pages to
+<A HREF="mailto:webmasters@gnu.org"><EM>webmasters@gnu.org</EM></A>, send other questions to <A HREF="mailto:gnu@gnu.org"><EM>gnu@gnu.org</EM></A>. 
+<p>
+Copyright notice above. 
+<p>Free Software Foundation, Inc.,
+59 Temple Place - Suite 330, Boston, MA  02111, USA. 
+
+<!-- ********************** END ****************************************-->
+
+
+
+</td>
+</tr>
+
+</table>
+</div>
+</body>
+</HTML>
