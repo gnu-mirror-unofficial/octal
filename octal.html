@@ -48,12 +48,36 @@ page">
 
 <!-- announcements go here --> 
 
+<p class=section>24 March 2001. Anonymous CVS access, API revisions, and
+status report.</p> You may wonder why it's been a few weeks since the last tarball. The
+answer is that Octal is now stored in GNU CVS, and is available for anonymous
+checkout. The following commands will check out the latest development version:
+
+<p>
+<pre>
+cvs -d:pserver:anoncvs@subversions.gnu.org:/cvsroot/octal login
+ 
+cvs -z3 -d:pserver:anoncvs@subversions.gnu.org:/cvsroot/octal co octal
+</pre>
+
+<p>March saw a lot of discussion and new ideas on the mailing list; this
+illustrated the need for several minor enhancements to the Octal API. These
+should be the last incompatible changes; it's better to do them sooner than
+later. There are several superficial changes (ox_event instead of ox_update)
+and one signature change (ox_channel instead of ox_track.) The API for
+specifying parameters has also been simplified, so that you can use a string
+like "cutoff:filter cutoff frequency:generic:slider:100:22000:8000" instead of
+a big <tt>struct</tt>. This will be more robust to future changes
+(in case parameters ever acquire more attributes.) Another improvement is the
+use of floating-point numbers for all machine parameter data, which will
+eliminate having to convert a 0...255 range into something else. 
+
+There are more details about these changes in the Octal API manual. 
+
+
+
 <p class=section>6 March 2001.</p> 0.92.3b is at the download site. This version includes the new widget-builder code and examples on how to use it. I've also updated the webpage's graphics to include screenshots.  
 <p class=section>25 February 2001. Minor update<p>0.92.2beta is at the download site.
-<p class=section>24 February 2001. Developer's Beta 0.92 out.<p>There is a 
-<a href="ftp://ftp.gnu.org/gnu/octal/">developer's beta release</a> at GNU ftp. 
-GNU is moving its ftp server in the next few weeks, so please bear with me if you 
-have trouble accessing it. 
 
 <!-- about the project -->
 <p class=section>About the project</p>
