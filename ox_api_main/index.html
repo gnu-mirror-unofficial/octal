@@ -1,0 +1,1169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.2 beta6 (August 14th, 1998)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>GNU OCTAL OX_API 0.92 Developer's Guide</TITLE>
+<META NAME="description" CONTENT="GNU OCTAL OX_API 0.92 Developer's Guide">
+<META NAME="keywords" CONTENT="ox_api_main">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="ox_api_main.css">
+</HEAD>
+<BODY >
+<!--Navigation Panel-->
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/lib/latex2html/icons.png/next_motif_gr.png"> 
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/lib/latex2html/icons.png/up_motif_gr.png"> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/lib/latex2html/icons.png/previous_motif_gr.png">   
+<BR>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<P>
+<H1 ALIGN="CENTER"><TT>GNU</TT> <TT>OCTAL</TT> 
+<BR> <TT>OX_API</TT> 0.92 Developer's Guide</H1>
+<P ALIGN="CENTER"><STRONG>David T. O'Toole (dto@gnu.org)</STRONG></P>
+
+<P>
+<BR>
+
+<H2><A NAME="SECTION00100000000000000000">
+Contents</A>
+</H2>
+<!--Table of Contents-->
+
+<UL>
+<LI><A NAME="tex2html11"
+ HREF="ox_api_main.html">Contents</A>
+<UL>
+<LI><A NAME="tex2html12"
+ HREF="ox_api_main.html#SECTION00110000000000000000">Introduction</A>
+<LI><A NAME="tex2html13"
+ HREF="ox_api_main.html#SECTION00120000000000000000">Copyright and License Information</A>
+<LI><A NAME="tex2html14"
+ HREF="ox_api_main.html#SECTION00130000000000000000">Recent API Tweaks</A>
+</UL>
+<LI><A NAME="tex2html15"
+ HREF="ox_api_main.html#SECTION00200000000000000000">Using OX_API</A>
+<UL>
+<LI><A NAME="tex2html16"
+ HREF="ox_api_main.html#SECTION00210000000000000000">Terminology of modular tracking systems.</A>
+<LI><A NAME="tex2html17"
+ HREF="ox_api_main.html#SECTION00220000000000000000">Including the machine interface</A>
+<LI><A NAME="tex2html18"
+ HREF="ox_api_main.html#SECTION00230000000000000000">Describing your parameters and controls</A>
+<LI><A NAME="tex2html19"
+ HREF="ox_api_main.html#SECTION00240000000000000000">Creating a machine type and telling the host about yourself</A>
+<LI><A NAME="tex2html20"
+ HREF="ox_api_main.html#SECTION00250000000000000000">Maintaining state.</A>
+<LI><A NAME="tex2html21"
+ HREF="ox_api_main.html#SECTION00260000000000000000">Setting up your callbacks</A>
+<UL>
+<LI><A NAME="tex2html22"
+ HREF="ox_api_main.html#SECTION00261000000000000000">ox_init: the startup</A>
+<LI><A NAME="tex2html23"
+ HREF="ox_api_main.html#SECTION00262000000000000000">ox_create: manufacturing new machines</A>
+<LI><A NAME="tex2html24"
+ HREF="ox_api_main.html#SECTION00263000000000000000">ox_destroy: destroying machines</A>
+<LI><A NAME="tex2html25"
+ HREF="ox_api_main.html#SECTION00264000000000000000">ox_work: processing and generating </A>
+<LI><A NAME="tex2html26"
+ HREF="ox_api_main.html#SECTION00265000000000000000">ox_update: when parameter values change</A>
+<LI><A NAME="tex2html27"
+ HREF="ox_api_main.html#SECTION00266000000000000000">ox_desc: giving text feedback </A>
+<LI><A NAME="tex2html28"
+ HREF="ox_api_main.html#SECTION00267000000000000000">ox_track: when the user adds or subtracts tracks</A>
+</UL>
+<LI><A NAME="tex2html29"
+ HREF="ox_api_main.html#SECTION00270000000000000000">Memory allocation</A>
+<LI><A NAME="tex2html30"
+ HREF="ox_api_main.html#SECTION00280000000000000000">Being flattened</A>
+<LI><A NAME="tex2html31"
+ HREF="ox_api_main.html#SECTION00290000000000000000">Compiling with GCC.</A>
+<LI><A NAME="tex2html32"
+ HREF="ox_api_main.html#SECTION002100000000000000000">Unresolved issues</A>
+</UL>
+<LI><A NAME="tex2html33"
+ HREF="ox_api_main.html#SECTION00300000000000000000">Using ox_wrappers</A>
+<UL>
+<LI><A NAME="tex2html34"
+ HREF="ox_api_main.html#SECTION00310000000000000000">Overview</A>
+<LI><A NAME="tex2html35"
+ HREF="ox_api_main.html#SECTION00320000000000000000">class OX_Machine</A>
+<LI><A NAME="tex2html36"
+ HREF="ox_api_main.html#SECTION00330000000000000000">Setting things up</A>
+</UL>
+<LI><A NAME="tex2html37"
+ HREF="ox_api_main.html#SECTION00400000000000000000">OX_API Reference</A>
+<UL>
+<LI><A NAME="tex2html38"
+ HREF="ox_api_main.html#SECTION00410000000000000000">Typedefs</A>
+<UL>
+<LI><A NAME="tex2html39"
+ HREF="ox_api_main.html#SECTION00411000000000000000">samp (octal.h)</A>
+<LI><A NAME="tex2html40"
+ HREF="ox_api_main.html#SECTION00412000000000000000">param (octal.h)</A>
+</UL>
+<LI><A NAME="tex2html41"
+ HREF="ox_api_main.html#SECTION00420000000000000000">Structures</A>
+<UL>
+<LI><A NAME="tex2html42"
+ HREF="ox_api_main.html#SECTION00421000000000000000">struct machine_type</A>
+<LI><A NAME="tex2html43"
+ HREF="ox_api_main.html#SECTION00422000000000000000">struct machine</A>
+<LI><A NAME="tex2html44"
+ HREF="ox_api_main.html#SECTION00423000000000000000">struct param_spec</A>
+</UL>
+<LI><A NAME="tex2html45"
+ HREF="ox_api_main.html#SECTION00430000000000000000">Catalog of widget and format types</A>
+<LI><A NAME="tex2html46"
+ HREF="ox_api_main.html#SECTION00440000000000000000">Required Prototypes for C Callbacks</A>
+<LI><A NAME="tex2html47"
+ HREF="ox_api_main.html#SECTION00450000000000000000">Package Functions</A>
+</UL></UL>
+<!--End of Table of Contents-->
+<P>
+
+<H1><A NAME="SECTION00110000000000000000">
+Introduction</A>
+</H1>
+
+<P>
+<B>The <TT>OX_API</TT> Developer's Guide</B> shows how to use the <TT>OCTAL</TT> plugin API to create tracker-sequenced audio plugins (also called
+``machines'') for the <TT>OCTAL</TT> program. <TT>OCTAL</TT> is a modular tracking system
+from the GNU Project <TT>(www.gnu.org)</TT>, designed for the creation of
+digital music.
+
+<P>
+<TT>OCTAL</TT> is a project to create both a cutting-edge music workstation <I>and</I>
+ to frame a cross-platform, source-level portable, GPL'ed music systems
+plugin API standard, based on unit generators and
+tracking. <TT>OCTAL</TT> itself (now under construction at GNU) is the result
+of the first goal; <TT>OX_API</TT> (now nearly complete) is the product of the
+second. The <TT>OCTAL</TT> project homepage (URL below) includes a more
+detailed overview, as well as current release code and
+documentation. There is also a mailing list called <TT>octal-dev</TT>.
+
+<P>
+Visit the <TT>OCTAL</TT> home page at <TT>http://www.gnu.org/software/octal</TT>
+
+<P>
+
+<H1><A NAME="SECTION00120000000000000000">
+Copyright and License Information</A>
+</H1>
+Copyright &#169; 2000, 2001 by David O'Toole <TT>(dto@gnu.org)</TT>.
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections.
+
+<P>
+The included file <TT>DOC_COPYING</TT> contains the text of the
+	license. If for some reason this file is missing, a copy of
+	the license is available online at 
+
+<P>
+<TT>http://www.gnu.org/copyleft/fdl.html</TT>
+
+<P>
+
+<H1><A NAME="SECTION00130000000000000000">
+Recent API Tweaks</A>
+</H1>
+
+<P>
+There are several minor changes to the API in this release. Most important is
+that the names of all the enumeration constants have changed. See the Reference
+chapter to see the new naming convention (adopted by osmosis from GTK+). 
+
+<P>
+
+<H1><A NAME="SECTION00200000000000000000">
+Using <TT>OX_API</TT></A>
+</H1>
+
+<P>
+This chapter presents a quick run-through of how to set up
+communication between <TT>OCTAL</TT> and your plugin using the C programming
+language. See the <B>Reference</B> chapter if you need complete
+information.
+
+<P>
+
+<H1><A NAME="SECTION00210000000000000000">
+Terminology of modular tracking systems.</A>
+</H1>
+
+<P>
+This section defines most of the important terms used in the rest of
+the document, focusing on those associated with new unit-generator
+based tracking systems like <TT>OCTAL</TT>.
+
+<P>
+<DL>
+<DT><STRONG>Machines.</STRONG>
+<DD>A machine is an object which processes or generates audio signals. These are the basic building blocks of a signal network, in which machines that generate signals route their audio through other machines, and so on. Traditionally the term <B>unit generator</B> has been used, but recent systems have augmented the basic concept with ideas from the tracking world.
+<DT><STRONG>Parameters.</STRONG>
+<DD>Parameters are data items that can be recieved by machines to control their generation/processing of audio. Things like ``note'', ``volume'', ``delay length'', or ``wave shape'' can be parameters. These can be controlled in two ways: <B>patterns</B> and <B>controls.</B>
+<DT><STRONG>Patterns.</STRONG>
+<DD>A pattern organizes musical data into a grid, with time running downwards. Each parameter of a machine corresponds to a column in the pattern editor. Each row is a moment in time, called a <TT>tick.</TT>
+<DT><STRONG>Control widgets.</STRONG>
+<DD>A control widget is anything that lets you interactively change the value of a parameter on a given machine. For instance, a graphical slider is a control widget.
+<DT><STRONG>Formats.</STRONG>
+<DD><TT>OCTAL</TT> machines can make requests as to how their parameter columns are displayed and interpreted by the host when the user edits patterns. These are called formats.
+<DT><STRONG>Machine library.</STRONG>
+<DD>If machines are instances, this is the class. A machine library is a dynamically-loadable library that can create, destroy, and operate machine objects.
+<DT><STRONG>Block.</STRONG>
+<DD>The continous audio output of <TT>OCTAL</TT> is generated in small blocks of a few hundred samples at a time. The block size changes dynamically.
+
+<P>
+</DL>
+
+<P>
+
+<H1><A NAME="SECTION00220000000000000000">
+Including the machine interface</A>
+</H1>
+
+<P>
+ <BLOCKQUOTE>
+ 
+<DIV ALIGN="LEFT">
+ <TT> 
+        #include "machine.h"  
+</TT></DIV>
+</BLOCKQUOTE> 
+
+<P>
+This file defines the structures and constants you'll need to interface with Octal. Utility functions (formerly in <TT>util.h</TT>) have been moved into the <TT>OX_API</TT> Package made accessible to machines. 
+
+<P>
+
+<H1><A NAME="SECTION00230000000000000000"></A>
+<A NAME="parameters"></A>
+<BR>
+Describing your parameters and controls
+</H1>
+
+<H4><A NAME="SECTION00230010000000000000">
+Indexing.</A>
+</H4> Each of your machine's parameters is identified by a numeric index,
+starting at zero. First, let's set up some symbolic constants to make
+these indices easier to remember.
+
+<P>
+This can be done very easily with C's enumerated type facility:
+
+<P><PRE>
+enum {ix_first_param, ix_second_param, ... }
+</PRE>
+
+<P>
+The <TT>ix_</TT> stands for ``index.'' It's just a convention that makes
+the meaning of the name more clear. You should name the constants in
+accordance with the parameter's use; for instance, the example
+delay machine uses <TT>ix_length</TT> and <TT>ix_feedback.</TT>
+
+<P>
+
+<H4><A NAME="SECTION00230020000000000000"></A> <A NAME="paramspecs"></A>
+<BR>
+Param_specs.
+</H4> Your machine's parameters may be
+presented to the user in a variety of ways. In the sequencer view, the musician
+will see each parameter as a column in a tracker-like grid interface.  In the
+signal router view, <TT>OCTAL</TT> can draw the user a little window (or ``control
+box'') full of graphical widgets for manipulating the parameters ``live'' in
+real-time.
+
+<P>
+In order for <TT>OCTAL</TT> to be able to do all this, we'll have to tell it a
+little bit about each parameter. In particular, <TT>OCTAL</TT> needs to know
+what they're called; how they should be drawn in the tracker view;
+what kind of widget to use when opening a control box; a short
+description of the parameter that can be displayed to the user; and
+information about the acceptable ranges and default value for the
+parameter.
+
+<P>
+There's a structure called <TT>param_spec</TT> made specially for this
+purpose. <TT>OCTAL</TT> will expect an array of these structures, arranged in
+the same order as listed in the <TT>ix_*</TT> constants we defined
+earlier.
+
+<P>
+We can statically initialize the array like this:
+
+<P><PRE>
+param_spec my_params[] = {
+
+  /* first parameter */
+  {    
+    my_format_type,
+    my_widget_type,
+    "short name",
+    "a longer description",
+    min_value,
+    max_value,
+    default_value
+  },
+
+  /* second parameter */ 
+  {
+    my_format_type,
+    ...
+    ... 
+    ...
+  }
+}
+</PRE>
+
+<P>
+With the above syntax, you can build an array of <TT>param_spec</TT>
+objects that match your machine's parameters. By describing them
+abstractly instead of in terms of graphics calls and windows, your
+machine can remain independent of GUI specifics.
+
+<P>
+For more specifics about the format types and widget types you can
+choose from, consult the table in <A HREF="ox_api_main.html#paramtable">3.3</A> (p.
+<A HREF="ox_api_main.html#paramtable"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="/usr/lib/latex2html/icons.png/cross_ref_motif.png"></A>).
+
+<P>
+
+<H1><A NAME="SECTION00240000000000000000"></A>
+<A NAME="yourself"></A>
+<BR>
+Creating a machine type and telling the host about yourself
+</H1> <TT>OCTAL's</TT> <TT>machine_type</TT> structure holds
+information about the kind of machine you're making. You'll need a long name
+(including the author's name), a short name (like ``delay'' or ``sampler''),
+the maximum number of tracks, the number of parameters you have<A NAME="tex2html1"
+ HREF="#foot325"><SUP>1.1</SUP></A>, and
+the address of your array of <TT>param_spec</TT> structures.
+
+<P>
+You'll also need to tell Octal about your input and output channels.
+One and two are <TT>mono</TT> and <TT>stereo</TT>, respectively. Zero input channels
+would mean that your machine is a ``pure generator'' which does not
+accept any audio input.
+
+<P>
+
+<H1><A NAME="SECTION00250000000000000000">
+Maintaining state.</A>
+</H1> 
+
+<P>
+Your machine library will be called upon to do the processing for many
+<B>machine instances.</B> After all, the musician may want to create
+more than one delay machine, or more than one sampler machine, each
+doing its own thing and playing its own sequences.
+
+<P>
+<TT>OCTAL</TT> uses the <TT>machine</TT> structure to represent each machine
+instance, regardless of type. (The system keeps track of which type
+each machine instance has.) Since each machine type will need to store
+different kinds of data, we'll need to define a new structure type
+that is unique to the new machine type.
+
+<P>
+<TT>OCTAL</TT> calls these <B>state objects.</B> Each machine can have a state
+object associated with it. Struct <TT>machine</TT> has a <TT>void*</TT>
+member called <TT>state</TT> which you can use to store the address of a
+state object.
+
+<P>
+Some of this bookkeeping can be hidden using the included <TT>ox_wrappers.</TT>
+This is a C++ wrapper for the <TT>OX_API</TT>. Class and member function facilities hide
+the management of state objects completely. See this document's chapter on <TT>ox_wrappers.</TT>
+
+<P>
+
+<H1><A NAME="SECTION00260000000000000000">
+Setting up your callbacks</A>
+</H1>
+
+<P>
+Each octal machine library must export seven specially named callback
+functions.<A NAME="tex2html2"
+ HREF="#foot180"><SUP>1.2</SUP></A> This section details
+when and how these functions are called by the host, as well as what
+to do (and what not to do) when this happens.
+
+<P>
+
+<H2><A NAME="SECTION00261000000000000000"></A>
+<A NAME="ox_init"></A>
+<BR>
+ox_init: the startup
+</H2>
+
+<P>
+ <BLOCKQUOTE>
+ 
+<DIV ALIGN="LEFT">
+ <TT> int ox_init(machine_type* t)  
+</TT></DIV>
+</BLOCKQUOTE> 
+
+<P>
+This function is called when the shared library is first loaded. <TT>OCTAL</TT> 
+will pass you the address of a machine_type structure, which you must
+fill in with the appropriate data. You may also perform any other
+one-time initialization tasks here, such as precomputing a large
+lookup table, loading a special configuration file, etcetera.
+
+<P>
+Here is a quick example of how to fill in the structure, taken from the example
+  square wave generator machine included in the <TT>OCTAL</TT> distribution: 
+
+<P><PRE>
+  t-&gt;long_name        = "David's Simple Squarewave Machine"; 
+  t-&gt;short_name       = "dtosquare"; 
+  t-&gt;max_tracks       = 1; 
+  t-&gt;input_channels   = 1; 
+  t-&gt;output_channels  = 1;   
+  t-&gt;num_params       = 2; 
+
+  /* give it the address of my array of param structs */ 
+  t-&gt;param_specs      = my_params;
+</PRE>
+
+<P>
+
+<H2><A NAME="SECTION00262000000000000000"></A>
+<A NAME="ox_create"></A>
+<BR>
+ox_create: manufacturing new machines
+</H2>
+ <BLOCKQUOTE>
+ 
+<DIV ALIGN="LEFT">
+ <TT>void ox_create(machine* m) 
+</TT></DIV>
+</BLOCKQUOTE> 
+
+<P>
+When the user creates a new machine instance of your type, the host
+will call this function with the address of the new <TT>machine</TT>
+struct.
+
+<P>
+Your job during ox_create() is as follows is to set up the machine
+instance and get it ready to run.
+
+<P>
+
+<UL><LI>Allocate a new state object using <TT>pkg-&gt;alloc()</TT><A NAME="tex2html3"
+ HREF="#foot326"><SUP>1.3</SUP></A> 
+
+<LI>Associate the new state object with the machine by assigning its
+  address to <TT>m-&gt;state</TT> 
+
+<LI>Don't worry about setting param defaults or creating a default track--the host will do this after you <TT>return.</TT> 
+
+</UL>
+
+<P>
+If you're not using state objects, you can skip most of those steps.
+
+<P>
+Here's an example:
+
+<P>
+ <BLOCKQUOTE>
+ 
+<DIV ALIGN="LEFT">
+ <TT>
+my_state *s; 
+<BR>
+... 
+<BR>
+do_something_with(s); 
+<BR>
+m-&gt;state = (void*)s; 
+<BR>
+ 
+</TT></DIV>
+</BLOCKQUOTE> 
+
+<P>
+
+<H2><A NAME="SECTION00263000000000000000">
+ox_destroy: destroying machines</A>
+</H2>
+
+<P>
+The opposite of <TT>ox_create().</TT> If you normally create a state object or
+allocate any memory buffers for a machine, now is the time to free that memory,
+and then free the state object itself. Be sure to use <TT>pkg-&gt;free()</TT>, the
+memory deallocation wrapper.
+
+<P>
+
+<H2><A NAME="SECTION00264000000000000000">
+ox_work: processing and generating </A>
+</H2>
+
+<P>
+ <BLOCKQUOTE>
+ 
+<DIV ALIGN="LEFT">
+ <TT>int ox_work(machine* m, int block_size) 
+</TT></DIV>
+</BLOCKQUOTE> 
+
+<P>
+This is where the actual work happens; hence the name. First, grab your state
+object by casting <TT>m-&gt;state</TT> to whatever pointer type you are using for
+your state objects.
+
+<P>
+ <BLOCKQUOTE>
+ 
+<DIV ALIGN="LEFT">
+ <TT>my_state *s = (my_state*) m-&gt;state;  
+</TT></DIV>
+</BLOCKQUOTE> 
+
+<P>
+Your parameters will have been set during the host's call to <TT>ox_update().</TT> The number of samples you should generate for this block is held
+in <TT>block_size </TT> which is passed to you.  Begin processing. Your input
+buffers will be arrays of type <TT>samp.</TT> <TT>m-&gt;lin</TT> and <TT>m-&gt;rin</TT> are
+the left and right input buffers<A NAME="tex2html4"
+ HREF="#foot211"><SUP>1.4</SUP></A>, while <TT>m-&gt;lout</TT> and <TT>m-&gt;rout</TT> are the output buffers. 
+
+<P>
+There will also be an auxiliary input signal set, labeled <TT>xlin/xrin</TT>, for
+use in vocoding and other modulation tasks.  This will be implemented soon.
+
+<P>
+Return <TT>true</TT> if you generated any sound; <TT>false</TT> otherwise. 
+
+<P>
+
+<H2><A NAME="SECTION00265000000000000000">
+ox_update: when parameter values change</A>
+</H2>
+
+<P><PRE>
+void ox_update(machine* m, int which_param, 
+               int track, param value)
+</PRE>
+
+<P>
+Use this callback to respond to events and parameter changes, altering the
+state of your machine as needed.
+
+<P>
+When a parameter's value changes, you'll be called with the track number,
+parameter number, and new parameter value. Your tracks are numbered from 0 to
+<TT>m-&gt;num_tracks - 1</TT>; the parameter indices will match up with the <TT>ix_*</TT> constants you set up earlier.
+
+<P>
+The value <TT>OX_NOTE_OFF</TT> is a special case for the <TT>OX_FORMAT_NOTE</TT>
+parameter type; it means that the note should stop playing on that track.
+
+<P>
+Traditionally, tracker columns have been ``persistent.'' A blank tracker cell
+changes nothing about the state of the machine, while parameter changes that do
+happen <I>stay changed until the user or sequencer interferes.</I>  If you
+follow this convention, your machines will feel more solid and more consistent
+to longtime users of tracking software.
+
+<P>
+
+<H4><A NAME="SECTION00265010000000000000">
+Great. But now what do I do with the data?</A>
+</H4> 
+
+<P>
+You might want to change the state of your machine. For instance, when you
+recieve a <TT>OX_NOTE_OFF</TT> value in a note column, you may need to update a
+variable somewhere that says ``I'm no longer playing any notes on track
+<I>x</I>.''<A NAME="tex2html5"
+ HREF="#foot327"><SUP>1.5</SUP></A>
+<P>
+You might also want to scale<A NAME="tex2html6"
+ HREF="#foot328"><SUP>1.6</SUP></A> the parameter data. For instance,
+<TT>OCTAL</TT> will display <TT>OX_FORMAT_SMALL</TT> tracker columns as two-digit
+hexadecimal numbers; while this makes it easy for the user to enter and edit
+the data, it's not likely that you'll be using a value from scaled <TT>0x00 -
+0xFE</TT> directly in DSP tasks.  More often you'll need +/- 1.0 or something like
+that. You can use <TT>ox_update()</TT> to perform the scaling when a parameter
+changes<A NAME="tex2html7"
+ HREF="#foot235"><SUP>1.7</SUP></A>, storing the result
+in your state object if neccessary.
+
+<P>
+Here is the <TT>ox_update()</TT> function taken from the example square-wave
+plugin: 
+
+<P><PRE>
+void ox_update(machine* m, int track, 
+               int param_index, param value) 
+{
+  my_state *s = (my_state*)m-&gt;state; 
+     
+  switch(param_index) {
+
+  case ix_note:
+    s-&gt;pitch = m-&gt;pkg-&gt;note2freq(value); 
+    if (value = OX_NOTE_OFF) s-&gt;play = 0; 
+    else s-&gt;play = 1; 
+    break;
+
+  case ix_vol:
+    s-&gt;vol = ((float)value) / 255.0;    /* scale to 1.0 */   
+  }
+}
+</PRE>
+
+<P>
+
+<H2><A NAME="SECTION00266000000000000000">
+ox_desc: giving text feedback </A>
+</H2>
+
+<P>
+ <BLOCKQUOTE>
+ 
+<DIV ALIGN="LEFT">
+ <TT>void ox_desc(char* dest, int which_param, param
+  value) 
+</TT></DIV>
+</BLOCKQUOTE> 
+
+<P>
+The user needs to know something about how a machine interprets numbers. So, in
+addition to the simple naming and description of parameters discussed in
+<A HREF="ox_api_main.html#parameters">1.3</A>, the <TT>OX_API</TT> supports ``live'' parameter feedback from the
+machines. When the musician tweaks a slider or spin button on your machine,
+Octal calls <TT>ox_desc()</TT><A NAME="tex2html8"
+ HREF="#foot245"><SUP>1.8</SUP></A> with the
+location of the buffer where you should write the string, the index number of
+the parameter being tweaked, and the new value. Your job is to make up a string
+describing the ``interpreted version'' of the new value; for instance, if the
+range <TT>0x00 - 0xFE</TT> is interpreted as a percentage, the following code
+will write a string describing the new value into the location pointed to by
+<TT>dest.</TT>  <TT>OCTAL</TT> might then display this string onscreen.
+
+<P><PRE>
+float x;
+int percent;
+...
+switch(which_param) {
+  
+  case ix_feedback:
+    x = ((float)value) / 255.0; 
+    percent = (int)(x*100);
+    sprintf(dest, "%d%%", percent);
+break;
+
+  case ix_vol: 
+    
+    ...
+</PRE>
+
+<P>
+It isn't safe to assume that the host's calls to <TT>ox_desc()</TT> will
+``pair up'' with parameter changes. While this will often be true,
+sometimes there will be no connection between calls.  For instance, to
+fill a ``listbox'' style control with five or six options, OCTAL will
+query <TT>ox_desc()</TT> for each choice and retrieve a string to
+display for each item in the box.
+
+<P>
+You can use C's <TT>enum</TT> facility to create a set of unique indices,
+and then <TT>switch</TT> on the <TT>value</TT> passed to you during <TT>ox_desc()</TT>, in each <TT>case</TT> returning the string you would like to have
+appear in the interface. This indexing strategy is like the one
+used for parameters themselves.
+
+<P>
+
+<H2><A NAME="SECTION00267000000000000000"></A>
+<A NAME="multitrack"></A>
+<BR>
+ox_track: when the user adds or subtracts tracks
+</H2>
+
+<P>
+ <BLOCKQUOTE>
+ 
+<DIV ALIGN="LEFT">
+ <TT>void ox_track(machine* m, int change) 
+</TT></DIV>
+</BLOCKQUOTE> 
+
+<P>
+The section on <TT>ox_update()</TT> contained a discussion of how your
+machines can recieve multiple tracks full of parameters. But how do
+you know when the user adds or deletes a track? (Keep in mind that the
+tracks are arranged in a stack, where insertions and deletions can
+only occur at the righmost end.)
+
+<P>
+When the user adds or deletes a track, <TT>OCTAL</TT> will set <TT>m-&gt;num_tracks</TT> to
+the new value, and then it will signal you by calling <TT>ox_track().</TT>
+If the user has added a track, you'll recieve the value <TT>+1.</TT> If the 
+user has removed a track, you'll recieve <TT>-1.</TT>
+
+<P>
+Do whatever memory allocation/deallocation or initialization you may
+need to do in these cases. See the next section for more information. 
+
+<P>
+
+<H1><A NAME="SECTION00270000000000000000"></A><A NAME="memory"></A>
+<BR>
+Memory allocation
+</H1>
+
+<P>
+There are special restrictions on memory allocation for <TT>OCTAL</TT> machines. First, you may only allocate memory during <TT>ox_create</TT> and
+<TT>ox_track.</TT> Second, you must use the provided wrappers for allocating memory
+rather than calling <TT>malloc</TT> and <TT>free</TT> directly. They wrappers reside in the <TT>OX_API</TT> package along with the utility functions formerly in <TT>util.h</TT>. Call them like this: 
+
+<P>
+<PRE>
+    m-&gt;pkg-&gt;alloc(size); 
+    m-&gt;pkg-&gt;free(ptr);
+</PRE>
+
+<P>
+As in the other examples, <TT>m</TT> is the pointer to your machine structure. 
+
+<P>
+
+<H1><A NAME="SECTION00280000000000000000"></A>
+<A NAME="flattened"></A>
+<BR>
+Being flattened
+</H1>
+When the user saves his/her song, your machine will need to be saved
+to disk. Since <TT>OCTAL</TT> has stored all the patterns of your machine, as
+well as kept track of current parameter values, it can save all this
+data without your needing to worry about it.
+
+<P>
+All machines start with one track upon creation. When <TT>OCTAL</TT> needs to
+create a machine with five tracks (because such a machine was saved in the song),
+it will simply create a default machine and then call your <TT>ox_track(1)</TT> four times to add the remaining tracks.
+
+<P>
+
+<H1><A NAME="SECTION00290000000000000000">
+Compiling with GCC.</A>
+</H1>
+
+<P>
+Using the <TT>-shared</TT> option to GCC, you can compile your C source
+file into a self-contained shared library (with the suffix <TT>*.so</TT>). Once this is done, <TT>OCTAL</TT> will be able to load and use your
+machine. Here's an example of a <B>GNU make</B> command that will
+properly compile your machine:
+
+<P>
+<PRE>
+squaregen.so: squaregen.c machine.h 
+    gcc -O3 -g -pedantic -shared squaregen.c -o squaregen.so
+</PRE>
+
+<P>
+<TT>OCTAL's</TT> build system will be able to automatically compile and install
+machines for the end user, so a distribution pack consisting of the
+machine source and documentation should suffice.
+
+<P>
+
+<H1><A NAME="SECTION002100000000000000000">
+Unresolved issues</A>
+</H1>
+
+<P>
+As of February 24, 2001, <TT>OX_API</TT> wavetable support has not yet been implemented. However,
+in all likelihood it will take the form of a function accepting a wave number
+and returning a pointer to the buffer, as well as its size. 
+
+<P>
+Additional functions may also accept a volume and note-number, and returning a
+different wave depending on those values. This will allow so-called velocity
+mapping and keyboard-range mapping for waves, as well as anything else cool we
+can think of.  
+
+<P>
+
+<H1><A NAME="SECTION00300000000000000000">
+Using <TT>ox_wrappers</TT></A>
+</H1>
+
+<P>
+
+<H1><A NAME="SECTION00310000000000000000">
+Overview</A>
+</H1> <TT>OCTAL</TT> includes a package called <TT>ox_wrappers,</TT> which
+is designed to simplify <TT>OCTAL</TT> machine programming through the use of
+syntactic features of <TT>C++.</TT> This section only explains the differences
+between raw <TT>OX_API</TT> programming and <TT>ox_wrappers</TT>, so it will help to have
+read the chapter on <TT>OX_API</TT> first. 
+
+<P>
+In a nutshell, your machine type is now a class; individual machines are now
+instances of that class. This lets you have data members, utility classes, and
+all the interesting features of C++ at your disposal to create machines.
+
+<P>
+
+<H1><A NAME="SECTION00320000000000000000">
+<TT>class OX_Machine</TT></A>
+</H1>
+
+<P>
+<TT>ox_wrappers.h</TT> declares a base class called <TT>OX_Machine,</TT> from which
+you'll derive a new class that implements your machine. Here is its definition:
+
+<P>
+<PRE>
+class OX_Machine {
+ public: 
+  OX_Machine(machine* m) {};        
+  ~OX_Machine() {};
+  static int initialize(machine_type* t) {};   
+  static void describe(char* dest, int which, param value) {}; 
+  void update(int track, int which, param value) {};           
+  int work(int block_size) {}; 
+  void track(int change) {};
+
+  machine* m; 
+  samp *lin, *rin, *lout, *rout; 
+};
+</PRE>
+
+<P>
+It's not hard to see that the member functions are just like the <TT>ox_*</TT>
+callbacks, but with the ``machine*'' pointer removed from the argument
+lists.<A NAME="tex2html9"
+ HREF="#foot331"><SUP>2.1</SUP></A> <TT>ox_create</TT> and <TT>ox_destroy</TT> are now the
+constructor<A NAME="tex2html10"
+ HREF="#foot332"><SUP>2.2</SUP></A> and destructor,
+respectively.
+
+<P>
+The frequently-accessed i/o buffer pointers <TT>rin, lin, lout, rout</TT> are
+members of the class, so they can be accessed in member functions without any
+explicit dereferencing. 
+
+<P>
+Instead of state objects, you can simply add data members to your derived
+class.
+
+<P>
+
+<H1><A NAME="SECTION00330000000000000000">
+Setting things up</A>
+</H1>
+
+<P>
+Now is the slightly weird part. Step one: define the macro <TT>OX_CLASS</TT> to
+be the name of your new derived class. If your class is called <TT>MyCoolDelay</TT>, then  <BLOCKQUOTE>
+ 
+<DIV ALIGN="LEFT">
+ <TT>#define OX_CLASS MyCoolDelay 
+</TT></DIV>
+</BLOCKQUOTE> 
+
+<P>
+It's important to do this before you include any <TT>ox_wrappers</TT> header
+files. The reason is that new functions, making statically-bound calls to your
+new member functions, are going to be created when you compile. 
+
+<P>
+Next, derive your class from <TT>OX_Machine</TT> and place its declaration in,
+say, <TT>MyCoolDelay.h</TT> Then do the following:
+
+<P>
+<PRE>
+#define OX_CLASS MyCoolDelay
+#include ``ox_wrappers.h''
+#include ``MyCoolDelay.h''
+#include ``ox_wrappers.cc''
+</PRE>
+
+<P>
+Now implement your member functions, and compile as a shared object. The
+wrapper will export the required <TT>OX_API</TT> functions with C linkage, so that
+<TT>OCTAL</TT> will be able to find them. When <TT>OCTAL</TT> calls them, <TT>ox_wrappers</TT>
+will forward the relevant info on to your machine. 
+
+<P>
+You'll still have to use some C structures such as <TT>machine_type</TT> and <TT>param_spec</TT> when communicating with <TT>OCTAL</TT>. Your class inherits a data member
+<TT>m</TT>, which is a pointer to the underlying <TT>struct machine</TT> object that
+<TT>OCTAL</TT> is dealing with directly.
+
+<P>
+All the information in <A HREF="ox_api_main.html#parameters">1.3</A>, <A HREF="ox_api_main.html#yourself">1.4</A>, and <A HREF="ox_api_main.html#flattened">1.8</A>
+applies to use of <TT>ox_wrappers.</TT> You might need to override the new and
+delete operators so that they call the <TT>OX_API</TT> wrappers.
+
+<H1><A NAME="SECTION00400000000000000000">
+<TT>OX_API</TT> Reference</A>
+</H1>
+
+<P>
+<I>[This chapter is not yet complete.]</I>
+
+<P>
+
+<H1><A NAME="SECTION00410000000000000000">
+Typedefs</A>
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION00411000000000000000">
+samp (octal.h)</A>
+</H2>
+
+<P>
+A signed floating-point data type for inputting and outputting
+samples. <TT>OCTAL</TT> plugin audio streams must be in this format. Audio data
+should be scaled from <TT>OX_RANGE_MIN</TT> to <TT>OX_RANGE_MAX</TT>. (The range for control data sent through AUX
+connections is user-defined.)
+
+<P>
+
+<H2><A NAME="SECTION00412000000000000000">
+param (octal.h)</A>
+</H2>
+
+<P>
+An integer type for storing machine parameters and notes. <TT>OCTAL</TT> 
+patterns are stored in this format. All negative values are
+reserved. See the section on <TT>ox_update()</TT> for more information.
+
+<P>
+
+<H1><A NAME="SECTION00420000000000000000">
+Structures</A>
+</H1>
+
+<P>
+<I>[Not yet finished.]</I>
+
+<P>
+
+<H2><A NAME="SECTION00421000000000000000">
+struct machine_type</A>
+</H2>
+
+<P>
+
+<H2><A NAME="SECTION00422000000000000000">
+struct machine</A>
+</H2>
+
+<P>
+
+<H2><A NAME="SECTION00423000000000000000">
+struct param_spec</A>
+</H2>
+
+<P>
+
+<H1><A NAME="SECTION00430000000000000000">
+Catalog of widget and format types</A>
+</H1>
+
+<P>
+<A NAME="paramtable"></A><TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">format name</TD>
+<TD ALIGN="LEFT">meaning</TD>
+<TD ALIGN="LEFT">example</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> OX_FORMAT_NOTE</TT></TD>
+<TD ALIGN="LEFT">a musical note</TD>
+<TD ALIGN="LEFT">C-4, D#2, B-5</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> OX_FORMAT_SMALL</TT></TD>
+<TD ALIGN="LEFT">two-digit hex</TD>
+<TD ALIGN="LEFT">3C, FE, 23</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> OX_FORMAT_LARGE</TT></TD>
+<TD ALIGN="LEFT">four-digit hex</TD>
+<TD ALIGN="LEFT">8000, 3CE1</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> OX_FORMAT_TRIGGER</TT></TD>
+<TD ALIGN="LEFT">event trigger</TD>
+<TD ALIGN="LEFT">0, 1</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> OX_FORMAT_WAVE</TT></TD>
+<TD ALIGN="LEFT">a sound from the wavetable</TD>
+<TD ALIGN="LEFT"><TT> 3C, 05</TT></TD>
+</TR>
+</TABLE>	
+
+<P>
+
+<H4><A NAME="SECTION00430010000000000000">.</A>
+
+</H4>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">widget name</TD>
+<TD ALIGN="LEFT">description</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> OX_WIDGET_SLIDER</TT></TD>
+<TD ALIGN="LEFT">a small slider bar with a handle</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">and displayed numeric value</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> OX_WIDGET_ENTRY</TT></TD>
+<TD ALIGN="LEFT">a numeric entry box with ``enter'' button</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> OX_WIDGET_BUTTON</TT></TD>
+<TD ALIGN="LEFT">a trigger button</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> OX_WIDGET_SPIN</TT></TD>
+<TD ALIGN="LEFT">spin button</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT> OX_WIDGET_OPTION</TT></TD>
+<TD ALIGN="LEFT">pulldown box with named options</TD>
+</TR>
+</TABLE>
+
+<P>
+
+<H1><A NAME="SECTION00440000000000000000">
+Required Prototypes for C Callbacks</A>
+</H1>
+
+<P>
+<PRE>
+        int         ox_init(machine_type* t)
+        void        ox_create(machine* m)
+        int         ox_destroy(machine* m)
+        void        ox_work(machine* m, int block_size)
+        void        ox_update(machine* m, int track,
+                              int which_param, param newvalue)
+        void        ox_desc(char* dest, int which, param value)
+        void        ox_track(machine* m, int change)
+</PRE>
+
+<P>
+
+<H1><A NAME="SECTION00450000000000000000">
+Package Functions</A>
+</H1>
+<I>[This section will cover memory allocators, wavetable functions,
+and more when finished.]</I> 
+
+<P>
+
+<H1><A NAME="SECTION00500000000000000000">
+About this document ...</A>
+</H1>
+ <STRONG><TT>GNU</TT> <TT>OCTAL</TT> 
+<BR> <TT>OX_API</TT> 0.92 Developer's Guide</STRONG><P>
+This document was generated using the
+<A HREF="http://www-dsed.llnl.gov/files/programs/unix/latex2html/manual/"><STRONG>LaTeX</STRONG>2<tt>HTML</tt></A> translator Version 98.2 beta6 (August 14th, 1998)
+<P>
+Copyright &#169; 1993, 1994, 1995, 1996,
+<A HREF="http://cbl.leeds.ac.uk/nikos/personal.html">Nikos Drakos</A>, 
+Computer Based Learning Unit, University of Leeds.
+<BR>
+Copyright &#169; 1997, 1998,
+<A HREF="http://www-math.mpce.mq.edu.au/~ross/">Ross Moore</A>, 
+Mathematics Department, Macquarie University, Sydney.
+<P>
+The command line arguments were: <BR>
+ <STRONG>latex2html</STRONG> <TT>-split 0 ox_api_main.tex</TT>
+<P>
+The translation was initiated by David O'Toole on 2001-02-24
+<BR><HR><H4>Footnotes</H4>
+<DL>
+<DT><A NAME="foot325">... have</A><A NAME="foot325"
+ HREF="ox_api_main.html#tex2html1"><SUP>1.1</SUP></A>
+<DD>If you
+followed the naming convention above, you can use something like
+<A HREF="ox_api_main.html#paramspecs">1.3</A>, this is <TT> sizeof(my_params) / sizeof(param_spec)</TT>
+
+<DT><A NAME="foot180">...
+functions.</A><A NAME="foot180"
+ HREF="ox_api_main.html#tex2html2"><SUP>1.2</SUP></A>
+<DD>They must have C linkage.
+
+<DT><A NAME="foot326">...<TT>pkg-&gt;alloc()</TT></A><A NAME="foot326"
+ HREF="ox_api_main.html#tex2html3"><SUP>1.3</SUP></A>
+<DD>See <A HREF="ox_api_main.html#memory">1.7</A> for more information on these functions.
+
+<DT><A NAME="foot211">... buffers</A><A NAME="foot211"
+ HREF="ox_api_main.html#tex2html4"><SUP>1.4</SUP></A>
+<DD>If your machine only accepts a mono
+input, they'll both point to the same buffer.
+
+<DT><A NAME="foot327">....''</A><A NAME="foot327"
+ HREF="ox_api_main.html#tex2html5"><SUP>1.5</SUP></A>
+<DD>This can be used for optimization; if your machine is not
+currently playing any notes, it can free up processor time by doing nothing
+during <TT> ox_work()</TT> and returning <TT> 0.</TT>
+
+<DT><A NAME="foot328">... scale</A><A NAME="foot328"
+ HREF="ox_api_main.html#tex2html6"><SUP>1.6</SUP></A>
+<DD>Scaling macros will probably be added to
+<TT> octal.h</TT> to simplify this process.
+
+<DT><A NAME="foot235">...
+changes</A><A NAME="foot235"
+ HREF="ox_api_main.html#tex2html7"><SUP>1.7</SUP></A>
+<DD>This might seem unnecessary, but the point of doing it this
+way is to keep the musician's interface to the data more consistent, and ensure
+that hex numbers will interoperate with most data types by allowing each
+machine type to choose how they will be interpreted. Some have argued for the
+ability to sequence with arbitrary data types, but imagine the analogous
+situation with traditional music notation: would we really want a
+different-looking set of note symbols for each instrument?
+
+<DT><A NAME="foot245">...<TT>ox_desc()</TT></A><A NAME="foot245"
+ HREF="ox_api_main.html#tex2html8"><SUP>1.8</SUP></A>
+<DD>Note that this function is not called in
+reference to any particular machine instance. It is ``library-wide.''
+
+<DT><A NAME="foot331">...
+lists.</A><A NAME="foot331"
+ HREF="ox_api_main.html#tex2html9"><SUP>2.1</SUP></A>
+<DD>Since ``initialize'' and ``describe'' are global functions that
+don't have to be associated with any particular machine, they're declared <TT>
+static.</TT>
+
+<DT><A NAME="foot332">...
+constructor</A><A NAME="foot332"
+ HREF="ox_api_main.html#tex2html10"><SUP>2.2</SUP></A>
+<DD>The right constructor takes a <TT> struct machine*</TT> as an
+argument; don't use the default no-arg constructor at all.
+
+</DL><HR>
+<!--Navigation Panel-->
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/lib/latex2html/icons.png/next_motif_gr.png"> 
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/lib/latex2html/icons.png/up_motif_gr.png"> 
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/lib/latex2html/icons.png/previous_motif_gr.png">   
+<BR>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>David O'Toole</I>
+<BR><I>2001-02-24</I>
+</ADDRESS>
+</BODY>
+</HTML>
