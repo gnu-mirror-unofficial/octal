@@ -34,6 +34,10 @@ $key = q/parameters/;
 $ref_files{$key} = "$dir".q|ox_api_main.html|; 
 $noresave{$key} = "$nosave";
 
+$key = q/corehandle/;
+$ref_files{$key} = "$dir".q|ox_api_main.html|; 
+$noresave{$key} = "$nosave";
+
 $key = q/ox_init/;
 $ref_files{$key} = "$dir".q|ox_api_main.html|; 
 $noresave{$key} = "$nosave";

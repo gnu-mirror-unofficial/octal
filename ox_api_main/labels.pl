@@ -34,6 +34,10 @@ $key = q/parameters/;
 $external_labels{$key} = "$URL/" . q|ox_api_main.html|; 
 $noresave{$key} = "$nosave";
 
+$key = q/corehandle/;
+$external_labels{$key} = "$URL/" . q|ox_api_main.html|; 
+$noresave{$key} = "$nosave";
+
 $key = q/ox_init/;
 $external_labels{$key} = "$URL/" . q|ox_api_main.html|; 
 $noresave{$key} = "$nosave";
@@ -62,7 +66,7 @@ $external_latex_labels{$key} = q|3.3|;
 $noresave{$key} = "$nosave";
 
 $key = q/memory/;
-$external_latex_labels{$key} = q|1.8|; 
+$external_latex_labels{$key} = q|1.8.3|; 
 $noresave{$key} = "$nosave";
 
 $key = q/yourself/;
@@ -75,6 +79,10 @@ $noresave{$key} = "$nosave";
 
 $key = q/parameters/;
 $external_latex_labels{$key} = q|1.3|; 
+$noresave{$key} = "$nosave";
+
+$key = q/corehandle/;
+$external_latex_labels{$key} = q|1.8|; 
 $noresave{$key} = "$nosave";
 
 $key = q/ox_init/;
