@@ -62,7 +62,7 @@ $external_latex_labels{$key} = q|1.3|;
 $noresave{$key} = "$nosave";
 
 $key = q/paramtable/;
-$external_latex_labels{$key} = q|3.3|; 
+$external_latex_labels{$key} = q|4.3|; 
 $noresave{$key} = "$nosave";
 
 $key = q/memory/;
