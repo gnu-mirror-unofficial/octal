@@ -35,8 +35,8 @@ page">
 <!-- link menu -->
 
 <tr><td align=center>
-<a href="http://dto.qwsi.net/octalstuff">Screenshots</a> ---
-<a href="http://ftp.gnu.org/gnu/octal/">Download</a> --- <a href="http://mail.gnu.org/mailman/listinfo/octal-dev">Discuss</a> 
+<!-- COMMENTING OUT THE SCREENSHOT URL FOR NOW <a href="">Screenshots</a> -->
+<a href="http://savannah.gnu.org/projects/octal/">Download</a> --- <a href="http://mail.gnu.org/mailman/listinfo/octal-dev">Discuss</a> 
 --- <a href="http://www.gnu.org/software/octal/ox_api_main/index.html">OX_API Documentation</a>
  --- <a href="http://www.sourceforge.net/projects/octalmachines">Developer
 Community</a> --- <a href="links.html">Links</a> 
@@ -50,14 +50,20 @@ Community</a> --- <a href="links.html">Links</a>
 
 <!-- announcements go here --> 
 
-<p class=section>4 April 2001.</p> Documentation updates. Also now available in
+<p class=section>12 September 2002.</p> The alpha codebase is about to undergo
+a significant change in accordance with recent discussions on the
+Octal-dev mailing list.  The project has moved toward a MIDI-esque sequencing
+and channel model, having abandoned the strict step-sequencing and numeric hex
+notation of tracker programs. In addition, large parts of Octal will be moved
+to GNU Objc, a powerful object-oriented language that's part of the GNU Compiler
+Collection. 
+
+<p>Watch this space for new information.
+
+<p class=section>4 April 2001.</p> Documentation now available in 
 <a href="octal_api.pdf">PDF format</a>. 
 
-<p class=section>24 March 2001. Anonymous CVS access, API revisions, and
-status report.</p> You may wonder why it's been a few weeks since the last tarball. The
-answer is that Octal is now stored in GNU CVS, and is available for anonymous
-checkout. The following commands will check out the latest development version:
-
+<p class=section>Octal is now stored in GNU CVS.</p> The following commands will check out the latest development version:
 <p>
 <pre>
 cvs -d:pserver:anoncvs@subversions.gnu.org:/cvsroot/octal login
@@ -65,24 +71,6 @@ cvs -d:pserver:anoncvs@subversions.gnu.org:/cvsroot/octal login
 cvs -z3 -d:pserver:anoncvs@subversions.gnu.org:/cvsroot/octal co octal
 </pre>
 
-<p>March saw a lot of discussion and new ideas on the mailing list; this
-illustrated the need for several minor enhancements to the Octal API. These
-should be the last incompatible changes; it's better to do them sooner than
-later. There are several superficial changes (ox_event instead of ox_update)
-and one signature change (ox_channel instead of ox_track.) The API for
-specifying parameters has also been simplified, so that you can use a string
-like "cutoff:filter cutoff frequency:generic:slider:100:22000:8000" instead of
-a big <tt>struct</tt>. This will be more robust to future changes
-(in case parameters ever acquire more attributes.) Another improvement is the
-use of floating-point numbers for all machine parameter data, which will
-eliminate having to convert a 0...255 range into something else. 
-
-There are more details about these changes in the Octal API manual. 
-
-
-
-<p class=section>6 March 2001.</p> 0.92.3b is at the download site. This version includes the new widget-builder code and examples on how to use it. I've also updated the webpage's graphics to include screenshots.  
-<p class=section>25 February 2001. Minor update<p>0.92.2beta is at the download site.
 
 <!-- about the project -->
 <p class=section>About the project</p>
